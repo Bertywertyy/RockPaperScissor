@@ -41,6 +41,7 @@ if st.button("Play"):
     # Determine the result
     if user_input == computer_pick:
         st.write("It's a draw!")
+        st.session_state.draw += 1
     elif (user_input == "rock" and computer_pick == "scissors") or \
          (user_input == "paper" and computer_pick == "rock") or \
          (user_input == "scissors" and computer_pick == "paper"):
@@ -54,9 +55,11 @@ if st.button("Play"):
 st.subheader("Score:")
 st.write(f"You won: {st.session_state.user_wins} times")
 st.write(f"The computer won: {st.session_state.computer_wins} times")
+st.write(f"Draw: {st.session_state.draw} times")
 
 # Button to reset the game
 if st.button("Reset Game"):
     st.session_state.user_wins = 0
     st.session_state.computer_wins = 0
+    st.sesstion_state.draw = 0
     st.write("Game reset!")
