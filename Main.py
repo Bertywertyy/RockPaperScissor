@@ -1,11 +1,13 @@
 import streamlit as st
 import random
 
-# Initialize session state for tracking wins
+# Initialize session state for tracking wins, computer wins, and draws
 if 'user_wins' not in st.session_state:
     st.session_state.user_wins = 0
 if 'computer_wins' not in st.session_state:
     st.session_state.computer_wins = 0
+if 'draw' not in st.session_state:
+    st.session_state.draw = 0
 
 # Load your images (replace with your actual image paths)
 rock_image = "rock_image.png"  # Replace with actual image path
