@@ -61,5 +61,5 @@ st.write(f"Draw: {st.session_state.draw} times")
 if st.button("Reset Game"):
     st.session_state.user_wins = 0
     st.session_state.computer_wins = 0
-    st.sesstion_state.draw = 0
+    st.session_state.draw = 0
     st.write("Game reset!")
