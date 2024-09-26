@@ -14,30 +14,24 @@ scissors_image = "scissors_image.png"  # Replace with actual image path
 
 # Game options
 options = ["rock", "paper", "scissors"]
+images = {"rock": rock_image, "paper": paper_image, "scissors": scissors_image}
 
 # Streamlit UI
 st.title("Rock, Paper, Scissors Game")
 
-# Display images for user selection
-col1, col2, col3 = st.columns(3)
+# Display radio buttons with images as labels
+user_input = st.radio(
+    "Choose your option",
+    options,
+    format_func=lambda x: x.capitalize(),
+    horizontal=True
+)
 
-user_input = None  # Initialize user input
-
-# Make the image act like a button
-with col1:
-    if st.image(rock_image, caption="Rock", use_column_width=True):
-        user_input = "rock"
-
-with col2:
-    if st.image(paper_image, caption="Paper", use_column_width=True):
-        user_input = "paper"
-
-with col3:
-    if st.image(scissors_image, caption="Scissors", use_column_width=True):
-        user_input = "scissors"
+# Display the selected image
+st.image(images[user_input], caption=user_input.capitalize(), use_column_width=True)
 
 # Randomly pick for the computer
-if user_input:
+if st.button("Play"):
     random_number = random.randint(0, 2)
     computer_pick = options[random_number]
     st.write(f"Computer picked: {computer_pick.capitalize()}.")
