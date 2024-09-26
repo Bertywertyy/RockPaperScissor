@@ -30,12 +30,15 @@ user_input = st.radio(
 # Display the selected image
 st.image(images[user_input], caption=user_input.capitalize(), use_column_width=True)
 
-# Randomly pick for the computer
+# Randomly pick for the computer and display the image
 if st.button("Play"):
     random_number = random.randint(0, 2)
     computer_pick = options[random_number]
+    
     st.write(f"Computer picked: {computer_pick.capitalize()}.")
+    st.image(images[computer_pick], caption=computer_pick.capitalize(), use_column_width=True)
 
+    # Determine the result
     if user_input == computer_pick:
         st.write("It's a draw!")
     elif (user_input == "rock" and computer_pick == "scissors") or \
