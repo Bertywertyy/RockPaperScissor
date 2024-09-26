@@ -7,16 +7,37 @@ if 'user_wins' not in st.session_state:
 if 'computer_wins' not in st.session_state:
     st.session_state.computer_wins = 0
 
+# Load your images (assuming they're in the same directory as your code)
+rock_image = "rock_image.png"  # Replace with the actual image path
+paper_image = "paper_image.png"  # Replace with the actual image path
+scissors_image = "scissors_image.png"  # Replace with the actual image path
+
 # Game options
 options = ["rock", "paper", "scissors"]
 
 # Streamlit UI
 st.title("Rock, Paper, Scissors Game")
 
-# User input: Rock, Paper, or Scissors
-user_input = st.selectbox("Choose your option", options)
+# Display images for user selection
+col1, col2, col3 = st.columns(3)
 
-if st.button("Play"):
+with col1:
+    if st.button("Rock"):
+        user_input = "rock"
+    st.image(rock_image, caption="Rock", use_column_width=True)
+
+with col2:
+    if st.button("Paper"):
+        user_input = "paper"
+    st.image(paper_image, caption="Paper", use_column_width=True)
+
+with col3:
+    if st.button("Scissors"):
+        user_input = "scissors"
+    st.image(scissors_image, caption="Scissors", use_column_width=True)
+
+# Randomly pick for the computer
+if "user_input" in locals():
     random_number = random.randint(0, 2)
     computer_pick = options[random_number]
     st.write(f"Computer picked: {computer_pick.capitalize()}.")
