@@ -27,8 +27,8 @@ user_input = st.radio(
     horizontal=True
 )
 
-# Display the selected image
-st.image(images[user_input], caption=user_input.capitalize(), use_column_width=True)
+# Display the selected image with custom size
+st.image(images[user_input], caption=user_input.capitalize(), width=200)  # Width of 200px
 
 # Randomly pick for the computer and display the image
 if st.button("Play"):
@@ -36,7 +36,7 @@ if st.button("Play"):
     computer_pick = options[random_number]
     
     st.write(f"Computer picked: {computer_pick.capitalize()}.")
-    st.image(images[computer_pick], caption=computer_pick.capitalize(), use_column_width=True)
+    st.image(images[computer_pick], caption=computer_pick.capitalize(), width=200)  # Width of 200px
 
     # Determine the result
     if user_input == computer_pick:
